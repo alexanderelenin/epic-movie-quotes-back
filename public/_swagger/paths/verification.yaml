@@ -1,0 +1,13 @@
+paths:
+  /email/verify/{id}/{hash}:
+    get:
+      tags:
+        - Verification
+      security:
+        - bearerAuth: []
+      summary: verify email
+      responses:
+        "200":
+          "Verified"
+        "404":
+          "Something went wrong"

@@ -1,0 +1,58 @@
+components:
+  responses:
+    notification:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                allOf:
+                  - $ref: "../schemas/notification.yaml#/components/schemas/Notification"
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              }
+    unread:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                allOf:
+                  - $ref: "../schemas/notification.yaml#/components/schemas/Notification"
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              } 
+    mark:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Marked"
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              }                     
+                                

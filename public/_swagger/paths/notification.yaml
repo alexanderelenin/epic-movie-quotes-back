@@ -1,0 +1,41 @@
+paths:
+  /notifications:
+    get: 
+      tags: 
+        - Notification
+      summary: Returns response for fetching notifications
+      responses:
+        "200": 
+          $ref: "../responses/notification.yaml#/components/responses/notification/200"
+        "404": 
+          $ref: "../responses/notification.yaml#/components/responses/notification/404"
+  /unread:
+    get: 
+      tags: 
+        - Notification
+      summary: Returns response for fetching not read notifications
+      responses:
+        "200": 
+          $ref: "../responses/notification.yaml#/components/responses/unread/200"
+        "404": 
+          $ref: "../responses/notification.yaml#/components/responses/unread/404" 
+  /mark:
+    post: 
+      tags: 
+        - Notification
+      summary: Returns response for marking notifications as read
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id: 
+                  type: integer 
+                  example: 1
+      responses:
+        "200": 
+          $ref: "../responses/notification.yaml#/components/responses/mark/200"
+        "404": 
+          $ref: "../responses/notification.yaml#/components/responses/mark/404"                

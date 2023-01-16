@@ -1,0 +1,21 @@
+components:
+  responses:
+    user:
+      "200":
+        description: OK
+        content:
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                allOf:
+                  - $ref: "../schemas/user.yaml#/components/schemas/User"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Unprocessable content",
+              }

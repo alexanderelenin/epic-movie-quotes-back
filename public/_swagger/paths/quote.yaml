@@ -1,0 +1,166 @@
+paths:
+  /store-quote:
+    post: 
+      tags: 
+        - Quote
+      summary: Returns response for adding quote
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                quote_en:
+                  type: string
+                  example: Some Name
+                quote_ka:
+                  type: string
+                  example: სახელი
+                movie_id: 
+                  type: integer
+                  example: 10
+                thumbnail: 
+                  type: file            
+              
+      responses:
+        "200":
+          response:
+            "Quote added"
+        "422":
+          response:
+            description: Unprocessable content
+            content:
+              application/json:
+                schema:
+                  type: json 
+                  example: {
+                    "message": "The thumbnail is required",
+                    "errors": {
+                      "thumbnail": [
+                        "The thumbnail is required"
+                      ],
+                      "quote": [
+                        "The quote is required"
+                      ]
+                    
+                    }
+                  
+                  
+                  }        
+  /delete-quote/{id}:
+    post: 
+      tags: 
+        - Quote
+      summary: Returns response about deleting quote
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200":
+          response: 
+            "Success"
+        "422":
+          response:  
+            "Something went wrong"
+  /quotes:
+    get: 
+      tags: 
+        - Quote
+      summary: Returns all created quotes
+      responses:
+        "200": 
+          response: 
+            "Success"
+        
+        "422":
+          response: 
+            "Not Found" 
+        
+                        
+  /quote/{id}:
+    get: 
+      tags: 
+        - Quote
+      summary: Returns response with 1 quote
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200": 
+          $ref: "../responses/quote.yaml#/components/responses/quote-search/200"
+        "422": 
+          $ref: "../responses/quote.yaml#/components/responses/quote-search/404"
+  
+    post: 
+      tags: 
+        - Quote
+      summary: Returns response about updating quote
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                quote_en:
+                  type: string
+                  example: Some Name
+                quote_ka:
+                  type: string
+                  example: სახელი
+                movie_id: 
+                  type: integer
+                  example: 10
+                thumbnail: 
+                  type: file  
+      responses:
+        "200": 
+          $ref: "../responses/quote.yaml#/components/responses/quote-edit/200"
+        "422": 
+          $ref: "../responses/quote.yaml#/components/responses/quote-edit/422"
+  /quote-search:
+    post: 
+      tags: 
+        - Quote
+      summary: Returns response about searching quote
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                search: 
+                  type: string 
+                  example: "#Test"
+                  
+      responses:
+        "200": 
+          $ref: "../responses/quote.yaml#/components/responses/quotes/200"
+        "404": 
+          response: 
+            $ref: "../responses/quote.yaml#/components/responses/quote-search/404"
+  /refresh:
+    post: 
+      tags: 
+        - Quote
+      summary: Returns response about searching quote
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                number: 
+                  type: integer 
+                  example: 3
+                  
+      responses:
+        "200": 
+          $ref: "../responses/quote.yaml#/components/responses/quotes/200"
+        "404": 
+          response: 
+            $ref: "../responses/quote.yaml#/components/responses/quote-search/404"                          
+    

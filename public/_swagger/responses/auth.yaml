@@ -1,0 +1,88 @@
+components:
+  responses:
+    register:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Successfully registered"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "The username name must be at least 3 characters. (and 1 more error)",
+                "errors": {
+                  "username": [
+                    "The username has already been taken"
+                  ],
+                  "email": [
+                    "The email has already been taken"
+                  ]
+                
+                }
+              
+              
+              }        
+    login:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "success"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "wrong email or password",
+                "errors": {
+                  "username": [
+                    "Email is not verified"
+                  ],
+                  "email": [
+                    "The email has already been taken"
+                  ]
+                
+                }
+              
+              
+              }     
+    logout:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "success"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: 'wrong entry'
+    me:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "authenticated successfully"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: 'access token not present'                          

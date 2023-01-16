@@ -1,0 +1,29 @@
+paths:
+  /user/update:
+    post:
+      tags:
+        - User
+      
+      summary: Updating user
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties: 
+                username: 
+                  type: string
+                  example: sashalenz
+                thumbnail: 
+                  type: file
+                      
+                password:
+                  type: string
+                  example: sasha1234
+             
+      responses:
+        "200": 
+          $ref: "../responses/user.yaml#/components/responses/user/200"
+        "422": 
+          $ref: "../responses/user.yaml#/components/responses/user/422"

@@ -1,0 +1,25 @@
+paths:
+  /redirect:
+    get:
+      tags:
+        - Google
+      security:
+        - bearerAuth: []
+      summary: login with google
+      responses:
+        "200": 
+          "Success"
+        "422": 
+          "Token is not present"
+  /callback:
+     post:
+      tags:
+        - Google
+      security:
+        - bearerAuth: []
+      summary: login with google
+      responses:
+        "200": 
+          "Success"
+        "422": 
+          "Token is not present"

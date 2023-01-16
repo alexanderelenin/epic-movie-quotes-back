@@ -1,0 +1,20 @@
+components:
+  responses:
+    like:
+      "200":
+        description: OK
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              example: "Liked"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Something went wrong",
+              }
+                                

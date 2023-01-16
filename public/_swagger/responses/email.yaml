@@ -1,0 +1,53 @@
+components:
+  responses:
+    email:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Success"
+      "409":
+        description: Already exists
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Email has already been taken",
+              } 
+    delete:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Email deleted!"
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              } 
+    verify:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Verified!"
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              }                    

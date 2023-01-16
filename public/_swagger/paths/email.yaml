@@ -1,0 +1,80 @@
+paths:
+  /email/add:
+    post: 
+      tags: 
+        - Secondary Email
+      summary: Returns response for adding secondary email
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              allOf:
+               - $ref: "../schemas/email.yaml#/components/schemas/Email"
+               - type: object
+      responses:
+        "200": 
+          $ref: "../responses/email.yaml#/components/responses/email/200"
+        "409": 
+          $ref: "../responses/email.yaml#/components/responses/email/409"
+  /email/{id}:
+    delete: 
+      tags: 
+        - Secondary Email
+      summary: Returns response for deleting secondary email
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200": 
+          $ref: "../responses/email.yaml#/components/responses/delete/200"
+        "404": 
+          $ref: "../responses/email.yaml#/components/responses/delete/404"
+  /email-verify:
+    post: 
+      tags: 
+        - Secondary Email
+      summary: Returns response for verifying secondary email
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: sasha@gmail.com
+                token: 
+                  type: string 
+                  example: asdlkjhl@#%23hasgaagieaeli3@315251sffkhgaw
+      responses:
+        "200": 
+          $ref: "../responses/email.yaml#/components/responses/verify/200"
+        "404": 
+          $ref: "../responses/email.yaml#/components/responses/verify/404"
+  /email/update:
+    post: 
+      tags: 
+        - Secondary Email
+      summary: Returns response for changing primary email
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_id:
+                  type: integer
+                  example: 1
+                user_id: 
+                  type: integer 
+                  example: 1
+                email_body: 
+                  type: string 
+                  example: sasha@lenz.com 
+      responses:
+        "200": 
+          $ref: "../responses/email.yaml#/components/responses/verify/200"
+        "404": 
+          $ref: "../responses/email.yaml#/components/responses/verify/404"                        

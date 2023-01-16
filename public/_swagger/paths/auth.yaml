@@ -1,0 +1,86 @@
+paths:
+  /register:
+    post: 
+      tags: 
+        - Auth
+      summary: Returns response for registration
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: sashalenz
+                  minLength: 3
+                email: 
+                  type: email 
+                  example: sasha@gmail.com
+                  minLength: 3
+                password: 
+                  type: password 
+                  example: sasha1234
+                  minLength: 8
+                  maxLength: 15
+                password_confirmation: 
+                  type: password 
+                  example: sasha1234
+                  minLength: 8
+                  maxLength: 15        
+      responses:
+        "200": 
+          $ref: "../responses/auth.yaml#/components/responses/register/200"
+        "422": 
+          $ref: "../responses/auth.yaml#/components/responses/register/422"
+  /login:
+    post: 
+      tags: 
+        - Auth
+      summary: Returns response for log in
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: 
+                  type: email 
+                  example: sasha@gmail.com
+                  minLength: 3
+                password: 
+                  type: password 
+                  example: sasha1234
+                  minLength: 8
+                  maxLength: 15
+                       
+      responses:
+        "200": 
+          $ref: "../responses/auth.yaml#/components/responses/login/200"
+        "422": 
+          $ref: "../responses/auth.yaml#/components/responses/login/422"
+  /logout:
+    post: 
+      tags: 
+        - Auth
+      summary: Returns response for log out
+      responses:
+        "200": 
+          $ref: "../responses/auth.yaml#/components/responses/logout/200"
+        "422": 
+          $ref: "../responses/auth.yaml#/components/responses/logout/422"
+  /me:
+    get: 
+      tags: 
+        - Auth
+      summary: Returns response for jwt-user
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200": 
+          $ref: "../responses/auth.yaml#/components/responses/me/200"
+        "422": 
+          $ref: "../responses/auth.yaml#/components/responses/me/422"                          
+

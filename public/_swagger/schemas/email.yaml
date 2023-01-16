@@ -1,0 +1,24 @@
+components:
+  schemas:
+    Email:
+      allOf:
+        - $ref: "../common.yaml#/components/schemas/Id"
+        - type: object
+          properties:
+            email: 
+              type: 'string'
+              example: 'sasha@gmail.com'
+            email_verified_at:
+              type: string
+              example: "2022-12-06 17:05:17"
+            token:
+              type: string
+              example: "#2gflasgalisguaij445lkaslkgjlalskgjlaksjgkaskgasgasgasgasgasgasgasghsfjsfdj"    
+            user_id:
+              type: integer
+              example: 1
+            
+            
+              
+              
+        - $ref: "../common.yaml#/components/schemas/TimeStamps"

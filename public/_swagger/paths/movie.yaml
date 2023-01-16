@@ -1,0 +1,133 @@
+paths:
+  /store-movie:
+    post: 
+      tags: 
+        - Movie
+      summary: Returns response for adding movie
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title_en:
+                  type: string
+                  example: Some Name
+                title_ka:
+                  type: string
+                  example: სახელი
+                genre: 
+                  type: json 
+                  example: ['Drama']
+                director_en: 
+                  type: string 
+                  example: Christopher Nolan
+                director_ka: 
+                  type: string 
+                  example: კრისტოფერ ნოლანი
+                year: 
+                  type: integer 
+                  example: 2015
+                description_en:
+                  type: text
+                  example: Some description
+                description_ka:
+                  type: text
+                  example: რაღაც ახსნა
+                thumbnail: 
+                  type: file            
+      responses:
+        "200":
+          response:
+            "Success"
+        "422":
+          response:
+            "Something went wrong"
+  /movies:
+    get: 
+      tags: 
+        - Movie
+      summary: Returns response for fetching movies of authorized user
+      responses:
+        "200":
+          response: 
+            "Success"
+        "422":
+          response:  
+            "Something went wrong"
+  /movie/{id}:
+    get: 
+      tags: 
+        - Movie
+      summary: Returns single movie
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200":
+          response: 
+            "Success"
+        "422":
+          response:  
+            "Something went wrong"
+    post: 
+      tags: 
+        - Movie
+      summary: Returns response for updating movie
+      requestBody:
+        required: true
+        content: 
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title_en:
+                  type: string
+                  example: Some Name
+                title_ka:
+                  type: string
+                  example: სახელი
+                genre: 
+                  type: json 
+                  example: ['Drama']
+                director_en: 
+                  type: string 
+                  example: Christopher Nolan
+                director_ka: 
+                  type: string 
+                  example: კრისტოფერ ნოლანი
+                year: 
+                  type: integer 
+                  example: 2015
+                description_en:
+                  type: text
+                  example: Some description
+                description_ka:
+                  type: text
+                  example: რაღაც ახსნა
+                thumbnail: 
+                  type: file            
+             
+      responses:
+        "200":
+          response: 
+            "Movie updated!"
+        "422":
+          response: 
+            "Something went wrong"                      
+  /movie-delete/{id}:
+    delete: 
+      tags: 
+        - Movie
+      summary: Returns response about deleting movie
+      parameters:
+        - $ref: "../common.yaml#/components/parameters/id"
+      responses:
+        "200":
+          response: 
+            "Success"
+        "422":
+          response:  
+            "Something went wrong"
+          
+    

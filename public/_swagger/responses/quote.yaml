@@ -1,0 +1,85 @@
+components:
+  responses:
+    quotes:
+      "200":
+        description: OK
+        content:
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                allOf:
+                  - $ref: "../schemas/quote.yaml#/components/schemas/Quote"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Something went wrong",
+              }
+    quote:
+      "200":
+        description: OK
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              items:
+                allOf:
+                  - $ref: "../schemas/quote.yaml#/components/schemas/Quote"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Something went wrong",
+              }
+    quote-edit:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Quote updated!"
+      "422":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "The thumbnail is required",
+                "errors": {
+                  "thumbnail": [
+                    "The thumbnail is required"
+                  ],
+                  "quote": [
+                    "The quote is required"
+                  ]
+                
+                }
+              
+              
+              } 
+    quote-search:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "Quote updated!"
+      "404":
+        description: Unprocessable content
+        content:
+          application/json:
+            schema:
+              type: json 
+              example: {
+                "message": "Not Found",
+              }                                                     

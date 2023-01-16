@@ -1,0 +1,13 @@
+components:
+  schemas:
+    User:
+      allOf:
+        - $ref: "../common.yaml#/components/schemas/Id"
+        # - type: object
+        # properties:
+        # Other Details
+          -type: object
+           properties:
+            email:
+              type:string 
+        - $ref: "../common.yaml#/components/schemas/TimeStamps"

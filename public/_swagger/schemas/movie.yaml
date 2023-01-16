@@ -1,0 +1,33 @@
+components:
+  schemas:
+    Movie:
+      allOf:
+        - $ref: "../common.yaml#/components/schemas/Id"
+        - type: object
+          properties:
+            title_en:
+              type: string
+              example: Test
+            title_ka:
+              type: string
+              example: ტესტ 
+            genre:
+              type: json
+              example: ["Drama"]
+            year:
+              type: integer
+              example: 2015
+            thumbnail:
+              type: file
+              example: hhgg40Ffd5u7ynTA8X.jpg
+            director_en:
+              type: string
+              example: Christopher Nolan
+            description_ka:
+              type: string
+              example: კრისტოფერ ნოლანი
+            user_id:
+              type: integer
+              example: 1  
+              
+        - $ref: "../common.yaml#/components/schemas/TimeStamps"
